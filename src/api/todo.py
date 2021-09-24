@@ -16,28 +16,31 @@ async def get_todos() -> dict:
 
 @router.post("")
 async def add_todo(schema: TodoSchema) -> dict:
-    new_todo = schema.new_obj(Todo())
-    db.sess.add(new_todo)
+    todo = Todo()
+    todo.__dict__.update(schema.__dict__)
+    db.sess.add(todo)
     db.sess.flush()
-    return {"msg": f"Todo object: id={new_todo.id} create success."}
+    return {"msg": f"Todo object: id={todo.id} create success."}
 
 
 @router.put("")
-async def update_todo(schema: TodoSchema) -> dict:
-    todo = db.sess.query(Todo).filter_by(id=schema.id).first()
-    if todo:
-        todo = schema.new_obj(todo, {"id"})
+async def update_todo(id: int, schema: TodoSchema) -> dict:
+    q = db.sess.query(Todo).filter_by(id=id)
+    ok = q.first()
+    if ok:
+        q.update(schema.__dict__)
         db.sess.flush()
-        return {"msg": f"Todo object: id={schema.id} has been updated."}
-    return {"msg": f"Todo object: id={schema.id} no found."}
+        return {"msg": f"Todo object: id={id} has been updated."}
+    return {"msg": f"Todo object: id={id} no found."}
 
 
 @router.delete("")
 async def delete_todo(id: int) -> dict:
-    todo = db.sess.query(Todo).filter_by(id=id).first()
-    if todo:
-        db.sess.delete(todo)
-        db.sess.commit()
+    q = db.sess.query(Todo).filter_by(id=id)
+    ok = q.first()
+    if ok:
+        q.delete()
+        db.sess.flush()
         return {"data": f"Todo with id={id} has been removed."}
 
     return {"data": f"Todo with id={id} not found."}

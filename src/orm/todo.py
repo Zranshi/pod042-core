@@ -18,15 +18,15 @@ class Todo(Base):
         default="",
         comment="代办事项内容",
     )
-    finish = Column(
-        String(30),
-        nullable=False,
-        default="unfinished",
-        comment="完成情况",
-    )
     deadline = Column(
         String(30),
         nullable=False,
         default="",
         comment="最后期限",
+    )
+    finish = Column(
+        String(30),
+        nullable=False,
+        default="unfinished",
+        comment="完成情况",
     )

@@ -10,7 +10,13 @@ from src.setting import db as conf
 def get_url() -> str:
     if conf.dbType == "sqlite":
         return sqlite_url(conf.sqlite)
+    elif conf.dbType == "mysql":
+        return mysql_url(conf.mysql)
 
 
 def sqlite_url(conf) -> str:
     return f"sqlite:///{conf.dbFile}"
+
+
+def mysql_url(conf) -> str:
+    return f"mysql+pymysql://{conf.usr}:{conf.pwd}@{conf.host}:{conf.port}/{conf.dbName}"

@@ -4,12 +4,12 @@
 # @File     : __init__.py
 # @Doc      : 配置文件
 
-import json
+import yaml
 
 from src.utils.dot_dict import DotDict
 
-with open("docs/conf.json") as config:
-    conf = DotDict(json.load(config))
+with open("docs/conf.yaml") as config:
+    conf = DotDict(yaml.load(config.read(), Loader=yaml.FullLoader))
 
 fastapi = conf.fastapi
 app = conf.app

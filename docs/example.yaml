@@ -1,0 +1,38 @@
+fastapi:
+  allowOrigins:
+    - http://localhost:3000
+    - http://127.0.0.1:3000
+
+app:
+  isDev: true
+  reload: true
+
+  dev:
+    host: 127.0.0.1
+    port: 8000
+
+  pro:
+    host:
+    port:
+
+db:
+  dbType: mysql
+  charset: utf-8
+  echo: false
+
+  sqlite:
+    dbFile: pod042.db
+    checkSameThread: true
+
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    usr: root
+    pwd: root
+    dbName: pod042
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password:
+  db: 0

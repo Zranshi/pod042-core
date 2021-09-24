@@ -15,7 +15,7 @@ class RedisUtils(object):
                 host=conf.host,
                 port=conf.port,
                 password=conf.password,
-                db=conf.db
+                db=conf.db,
             )
         self._conn = Redis(connection_pool=self._default_conn_pool)
 
@@ -43,6 +43,8 @@ class RedisUtils(object):
     def expire(self, key, ex=int):
         return self._conn.expire(key, ex)
 
+
+redis = RedisUtils()
 
 # Test
 if __name__ == "__main__":

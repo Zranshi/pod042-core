@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.api.todos.todos import router as todos
+from src.api.todo import router as todos
 from src.setting import app
 from starlette.responses import RedirectResponse
 
