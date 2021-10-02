@@ -1,7 +1,7 @@
-from src.schema.base import Base
+from src.schema.base import BaseSchema
 
 
-class TodoSchema(Base):
+class TodoSchema(BaseSchema):
     content: str = ""
-    finish: str = "unfinished"
-    deadline: str = ""
+    complete: bool = False
+    comment: str = ""
