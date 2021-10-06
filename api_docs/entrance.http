@@ -1,0 +1,27 @@
+### 登陆
+POST http://127.0.0.1:8000/entrance/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "782938005@qq.com",
+  "password": "123456"
+}
+
+### 注册
+POST http://127.0.0.1:8000/entrance/registry HTTP/1.1
+content-type: application/json
+
+{
+  "email": "782938005@qq.com",
+  "password": "654321",
+  "name": "Mike"
+}
+
+### 找回密码
+PUT http://127.0.0.1:8000/entrance/find_back HTTP/1.1
+content-type: application/json
+
+{
+  "email": "782938005@qq.com",
+  "password": "13216516"
+}

@@ -5,7 +5,6 @@
 # @Doc      : 配置文件
 
 import yaml
-
 from src.utils.dot_dict import DotDict
 
 with open("docs/conf.yaml") as config:

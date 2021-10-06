@@ -4,8 +4,8 @@
 # @File     : db_setting.py
 # @Doc      : 获取数据库连接url
 
-from src.setting import db as conf
 from databases import Database
+from src.setting import db as conf
 
 
 def database_connection() -> Database:
